@@ -10,9 +10,15 @@
 
 
 function continueGame() {
-    //generate a random alphabet
+    //Generate a random alphabet
     const alphabet = getARandomAlphabet();
-    console.log(alphabet);
+
+    //Set  randomly generated  alphabet to the screen
+    const currentAlphabetElement = document.getElementById('current-alphabet');
+    currentAlphabetElement.innerText = alphabet;
+
+    //Set background color
+    setBackgroundColorById(alphabet);
 }
 
 function play() {

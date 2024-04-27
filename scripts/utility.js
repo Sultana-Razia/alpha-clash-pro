@@ -10,6 +10,12 @@ function showElementById(elementId) {
 }
 
 
+function setBackgroundColorById(elementId) {
+    const element = document.getElementById(elementId);
+    element.classList.add('bg-[#FFA500]');
+}
+
+
 function getARandomAlphabet() {
     //create a alphabet array
     const alphabetString = 'abcdefghijklmnopqrstuvwxyz';
