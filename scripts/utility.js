@@ -16,6 +16,12 @@ function setBackgroundColorById(elementId) {
 }
 
 
+function removeBackgroundColorById(elementId) {
+    const element = document.getElementById(elementId);
+    element.classList.remove('bg-[#FFA500]');
+}
+
+
 function getARandomAlphabet() {
     //create a alphabet array
     const alphabetString = 'abcdefghijklmnopqrstuvwxyz';
