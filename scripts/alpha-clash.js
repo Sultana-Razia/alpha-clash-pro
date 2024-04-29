@@ -23,15 +23,19 @@ function handleKeyboardKeyUpEvent(event) {
         console.log('You get a point');
 
         //get the current score
-        const currentScoreElement = document.getElementById('current-score');
-        const currentScoreText = currentScoreElement.innerText;
-        const currentScore = parseInt(currentScoreText);
+        const currentScore = getTextElementValueById('current-score');
+
+        // ----------------
+        // const currentScoreElement = document.getElementById('current-score');
+        // const currentScoreText = currentScoreElement.innerText;
+        // const currentScore = parseInt(currentScoreText);
 
         //increase the score
         const newScore = currentScore + 1;
 
         //show the update score
-        currentScoreElement.innerText = newScore;
+        setTextElementValueById('current-score', newScore);
+        // currentScoreElement.innerText = newScore;
 
         //start a new round
         removeBackgroundColorById(expectedAlphabet);
@@ -40,14 +44,24 @@ function handleKeyboardKeyUpEvent(event) {
     else {
         console.log('You missed. You lost a life');
         //get the current life number
-        const currentLifeElement = document.getElementById('current-life');
-        const currentLife = parseInt(currentLifeElement.innerText);
+        const currentLife = getTextElementValueById('current-life');
+
+        //---------------------------
+        // const currentLifeElement = document.getElementById('current-life');
+        // const currentLife = parseInt(currentLifeElement.innerText);
 
         //reduce the life count
         const newLife = currentLife - 1;
 
         //display the updated life count
-        currentLifeElement.innerText = newLife;
+        setTextElementValueById('current-life', newLife);
+
+        //------------------------------
+        // currentLifeElement.innerText = newLife;
+
+        if (newLife == 0) {
+            gameOver();
+        }
 
     }
 }
@@ -69,6 +83,18 @@ function continueGame() {
 
 function play() {
     hideElementById('home-screen');
+    hideElementById('final-score');
     showElementById('play-ground');
+
+    //reset score and life
+    setTextElementValueById('current-life', 5);
+    setTextElementValueById('current-score', 0)
+
     continueGame();
+}
+
+
+function gameOver() {
+    hideElementById('play-ground');
+    showElementById('final-score');
 }
